@@ -1,0 +1,27 @@
+void find_lowest_attendance(int records[][max_col], int total_rows)
+{
+    int peak_absence_day = 0;
+    int highest_absence_count = -1;
+
+    for (int c = 0; c < max_col; c++)
+    {
+        int daily_absentee_total = 0;
+
+        for (int r = 0; r < total_rows; r++)
+        {
+            if (records[r][c] == 0)
+            {
+                daily_absentee_total++;
+            }
+        }
+
+        if (daily_absentee_total > highest_absence_count)
+        {
+            highest_absence_count = daily_absentee_total;
+            peak_absence_day = c;
+        }
+    }
+
+    cout << "\nWorst attendance day = Day " << peak_absence_day + 1 
+         << " (" << highest_absence_count << " absences)\n";
+}
